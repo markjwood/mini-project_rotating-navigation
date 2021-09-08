@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --clr-black: #000;
+  --clr-dark-gray: hsl(0, 0%, 40%);
+  --clr-highlight: hsl(5, 90%, 75%);
+
+  --rotate-skew: 15deg;
+}
+
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+}
+
+main {
+  --rotation: calc(-1 * var(--rotate-skew));
+	transform-origin: top left;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	width: 100%;
+	margin: 0;
+	background-color: #fff;
+	transition: transform 200ms;
+}
+
+article {
+	width: 99%;
+	max-width: 50em;
+	margin: 8rem auto 3rem;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+h1 {
+  margin: 0;
+  line-height: 1;
+  font-size: 2rem;
+}
+
+p {
+  color: var(--clr-dark-gray);
+}
+
+figure {
+  margin: 1em 0;
+}
+
+figcaption {
+  margin-bottom: .75em;
+}
+
+img {
+  max-width: 100%;
+}
+
+.subhead {
+  margin-top: 0;
+  font-style: italic;
+}
+
+/* rotating buttons */
+.circle {
+	--rotation: -90deg;
+	--translation: 50%, -50%;
+	display: grid;
+	grid-template-areas:
+		"blank blank"
+		"close hamburger";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+  place-items: center;
+	
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	transform: translate(-50%, -50%);
+	width: 15rem;
+	height: 15rem;
+	border-radius: 50%;
+	background-color: var(--clr-highlight);
+	transition: transform 200ms;
+}
+
+.rotate-btn {
+  background: 0;
+	border: 0;
+	padding: 0;
+	font-size: 2rem;
+  line-height: 1;
+	color: #fff;
+}
+
+.hamburger {
+  grid-area: hamburger;
+}
+
+.close {
+  grid-area: close;
+}
+
+/* navigation menu */
+.bg-hidden {
+	z-index: -10;
+	position: fixed;
+	inset: 0;
+	background-color: var(--clr-dark-gray);
+}
+
+.main-nav {
+  position: fixed;
+  /* display: none; */
+  z-index: -5;
+  bottom: 3rem;
+  left: 1.5em;
+}
+
+.main-nav--links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  transition: transform 300ms 100ms;
+}
+
+.main-nav--links > li + li {
+  margin-top: 1.5em;
+}
+
+.main-nav--links a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 200ms;
+}
+
+.main-nav--links a:hover,
+.main-nav--links a:focus {
+  color: var(--clr-highlight);
+}
+
+a .fas {
+  padding-right: .5em;
+}
+
+/* rotate & skew */
+.rotate {
+  transform: rotate(var(--rotation)) translate(var(--translation, 0));
+}
+
+.skew {
+  transform: skew(var(--rotate-skew));
+}
+
+.unskew {
+  /* straightens the skewed text by applying opposite skew */
+  transform: skew(calc(-1 * var(--rotate-skew)));
+}
+
+@media screen and (min-width: 62em) {
+  main > * {
+    margin-top: 5rem;
+  }
+}
