@@ -156,6 +156,10 @@ img {
   color: var(--clr-highlight);
 }
 
+.above {
+  z-index: 10;
+}
+
 a .fas {
   padding-right: .5em;
 }
