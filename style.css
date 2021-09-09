@@ -6,6 +6,7 @@
   --clr-highlight: hsl(5, 90%, 75%);
 
   --rotate-skew: 15deg;
+  --circle-size: 12rem;
 }
 
 *,
@@ -34,9 +35,9 @@ main {
 }
 
 article {
-	width: 99%;
+	width: 98%;
 	max-width: 50em;
-	margin: 8rem auto 3rem;
+	margin: calc((var(--circle-size) / 2) + 1rem) auto 3rem;
 }
 
 button {
@@ -81,15 +82,15 @@ img {
 		"close hamburger";
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
-  place-items: center;
+  grid-gap: calc(var(--circle-size) / 3.5);
 	
 	position: fixed;
 	z-index: 10;
 	top: 0;
 	left: 0;
 	transform: translate(-50%, -50%);
-	width: 15rem;
-	height: 15rem;
+	width: var(--circle-size);
+	height: var(--circle-size);
 	border-radius: 50%;
 	background-color: var(--clr-highlight);
 	transition: transform 200ms;
@@ -106,10 +107,14 @@ img {
 
 .hamburger {
   grid-area: hamburger;
+  justify-self: start;
+  align-self: start;
 }
 
 .close {
   grid-area: close;
+  justify-self: end;
+  align-self: start;
 }
 
 /* navigation menu */
